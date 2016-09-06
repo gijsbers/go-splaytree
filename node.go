@@ -9,10 +9,6 @@ func newNode(item Item) *node {
 	return &node{item: item}
 }
 
-func (node *node) Less(than Item) bool {
-	return node.item.Less(than)
-}
-
 func (node *node) count() int {
 	if node == nil {
 		return 0

@@ -31,7 +31,8 @@ func (tree *SplayTree) NonEmpty() bool {
 	return tree.root != nil
 }
 
-// Give the element which is currently at the root.
+// Give the element which is currently at
+// the root of the tree as a pair (item, true).
 // Return a pair (nil, false) if the tree is empty.
 func (tree *SplayTree) Root() (Item, bool) {
 	if tree.root == nil {

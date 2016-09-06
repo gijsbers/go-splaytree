@@ -3,7 +3,7 @@ package splaytree
 import "testing"
 
 func TestInsert(t *testing.T) {
-	tree := NewTree()
+	tree := NewSplayTree()
 	if tree == nil {
 		t.Errorf("new tree == nil")
 	}
@@ -23,7 +23,7 @@ func TestInsert(t *testing.T) {
 }
 
 func TestReplace(t *testing.T) {
-	tree := NewTree()
+	tree := NewSplayTree()
 	if tree == nil {
 		t.Errorf("new tree == nil")
 	}

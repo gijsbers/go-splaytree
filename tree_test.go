@@ -2,14 +2,8 @@ package splaytree
 
 import "testing"
 
-type Int int
-
-func (i Int) Less(than Item) bool {
-	return i < than.(Int)
-}
-
 func TestClear(t *testing.T) {
-	tree := NewTree()
+	tree := NewSplayTree()
 	tree.InsertAll([]Item{Int(6), Int(4), Int(3), Int(1)})
 	tree.Clear()
 	if tree.root != nil {
@@ -18,7 +12,7 @@ func TestClear(t *testing.T) {
 }
 
 func TestCount(t *testing.T) {
-	tree := NewTree()
+	tree := NewSplayTree()
 	if tree.Count() != 0 {
 		t.Errorf("count !0")
 	}
@@ -37,7 +31,7 @@ func TestCount(t *testing.T) {
 }
 
 func TestHeight(t *testing.T) {
-	tree := NewTree()
+	tree := NewSplayTree()
 	if tree.Height() != -1 {
 		t.Errorf("height !-1")
 	}
@@ -64,7 +58,7 @@ func TestHeight(t *testing.T) {
 }
 
 func TestNonEmpty(t *testing.T) {
-	tree := NewTree()
+	tree := NewSplayTree()
 	if tree.NonEmpty() != false {
 		t.Errorf("NonEmpty !false")
 	}
@@ -79,7 +73,7 @@ func TestNonEmpty(t *testing.T) {
 }
 
 func TestRoot(t *testing.T) {
-	tree := NewTree()
+	tree := NewSplayTree()
 	if r, b := tree.Root(); b != false || r != nil {
 		t.Errorf("Root !false")
 	}

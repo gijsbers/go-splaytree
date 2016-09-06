@@ -4,9 +4,9 @@ Splay tree in Go.
 
 [Splay trees](https://en.wikipedia.org/wiki/Splay_tree)
 are self-balancing binary search trees.
-Accessing a node in the tree causes it and its neighbours
+Accessing a node in the tree causes it and its neighbors
 to be splayed upwards by means of rotations.
-Future accesses to this node or to its neighbours will then be cheaper.
+Future accesses to this node or to its neighbors will then be cheaper.
 Splay trees perform best when there is temporal or spatial
 [locality](https://en.wikipedia.org/wiki/Locality_of_reference)
 in the access patterns (insertions, lookups or removals).
@@ -15,13 +15,16 @@ you investigate specific age groups.
 Or you manage virtual memory pages and your applications tend
 to focus on groups of related pages. Over time they will
 abandon some groups of memory pages and move on to other
-groups of memory pages.
+groups of memory pages. The implied locality of reference in
+these examples indicate splay trees as the data structure of choice.
 
-On average the cost of accesses (insertions, lookups or removals)
-is O(log n). The worst case cost for one access is O(n).
+The worst case cost for a single access (insertions, lookups or removals)
+is O(n), but amortized (averaged) over a sequence of accesses,
+while starting from an empty tree, the cost will be O(log n).
 Inserting a sorted sequence of 'n' elements into an empty tree
-has cost O(n), which is optimal.  Retrieving that same sequence
-in either ascending or descending order has again cost O(n).
+has total cost O(n), which is optimal.  Retrieving that same sequence
+of 'n' elements in either ascending or descending order has total cost O(n),
+which is again optimal.
 
 ##References
 

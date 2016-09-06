@@ -3,7 +3,7 @@ package splaytree
 import "testing"
 
 func TestDuplicate(t *testing.T) {
-	tree := NewTree()
+	tree := NewSplayTree()
 	items := []Item{Int(3), Int(5), Int(7), Int(2), Int(4), Int(6), Int(8)}
 	tree.InsertAll(items)
 	dup := tree.Duplicate()

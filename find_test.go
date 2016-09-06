@@ -3,7 +3,7 @@ package splaytree
 import "testing"
 
 func TestMin(t *testing.T) {
-	tree := NewTree()
+	tree := NewSplayTree()
 	items := []Item{Int(3), Int(5), Int(7), Int(2), Int(4), Int(6), Int(8)}
 	min := Int(99)
 	for _, item := range items {
@@ -20,7 +20,7 @@ func TestMin(t *testing.T) {
 }
 
 func TestMax(t *testing.T) {
-	tree := NewTree()
+	tree := NewSplayTree()
 	items := []Item{Int(3), Int(5), Int(7), Int(2), Int(4), Int(6), Int(8)}
 	max := Int(0)
 	for _, item := range items {

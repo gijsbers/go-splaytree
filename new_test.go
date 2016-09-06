@@ -2,8 +2,8 @@ package splaytree
 
 import "testing"
 
-func TestNewTree(t *testing.T) {
-	tree := NewTree()
+func TestNewSplayTree(t *testing.T) {
+	tree := NewSplayTree()
 	if tree == nil {
 		t.Errorf("new tree == nil")
 	}

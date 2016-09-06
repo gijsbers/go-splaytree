@@ -3,7 +3,7 @@ package splaytree
 import "testing"
 
 func TestDeleteEmpty(t *testing.T) {
-	tree := NewTree()
+	tree := NewSplayTree()
 	if i, b := tree.DeleteRoot(); b || i != nil {
 		t.Errorf("DeleteRoot nil")
 	}
@@ -19,7 +19,7 @@ func TestDeleteEmpty(t *testing.T) {
 }
 
 func TestDelete(t *testing.T) {
-	tree := NewTree()
+	tree := NewSplayTree()
 	items := []Item{Int(6), Int(4), Int(2), Int(5), Int(3), Int(7), Int(0)}
 	tree.InsertAll(items)
 	if n := tree.Count(); n != len(items) {
