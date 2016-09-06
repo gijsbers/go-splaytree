@@ -16,21 +16,14 @@ func TestStress(t *testing.T) {
 		i := sort.Search(n, func(i int) bool { return x <= a[i] })
 		return i, i < n && x == a[i]
 	}
-	shuffle := func(a []int, n int) {
-		for i := 0; i < n-1; i++ {
-			r := i + rand.Intn(n-i)
-			a[i], a[r] = a[r], a[i]
-		}
-	}
 
 	for outer := 0; outer < 10; outer++ {
 		tree := NewSplayTree()
 		size := atLeast(3000)
-		nums := make([]int, size)
+		nums := rand.Perm(size)
 		for i := 0; i < size; i++ {
-			nums[i] = i * 2
+			nums[i] *= 2
 		}
-		shuffle(nums, size)
 
 		for i := 0; i < size; i++ {
 			if !tree.Insert(Int(nums[i])) {
