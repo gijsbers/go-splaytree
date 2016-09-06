@@ -14,7 +14,7 @@ func (i Int) Less(than Item) bool {
 // and do a lookup to preserve optimal theoretical properties.
 func ExampleIterator() {
 	tree := NewSplayTree()
-	tree.InsertAll([]Item{Int(2), Int(4), Int(1), Int(3)})
+	tree.InsertAll([]Item{Int(2), Int(4), Int(1), Int(3), Int(6), Int(0)})
 	iter := tree.Iterator()
 	for item := iter(); item != nil; item = iter() {
 		fmt.Printf("%v ", item)
@@ -23,14 +23,14 @@ func ExampleIterator() {
 			break
 		}
 	}
-	// Output: 1 2 3
+	// Output: 0 1 2 3
 }
 
 // Iterate over items in a tree in reverse order.
 // Aborting the iteration halfway requires doing a lookup on the last item.
 func ExampleReverseIterator() {
 	tree := NewSplayTree()
-	tree.InsertAll([]Item{Int(10), Int(99), Int(42), Int(0)})
+	tree.InsertAll([]Item{Int(10), Int(99), Int(42), Int(0), Int(66), Int(5)})
 	iter := tree.ReverseIterator()
 	for item := iter(); item != nil; item = iter() {
 		fmt.Printf("%v ", item)
@@ -39,7 +39,7 @@ func ExampleReverseIterator() {
 			break
 		}
 	}
-	// Output: 99 42
+	// Output: 99 66 42
 }
 
 // Iterate over items in a tree while observing lower and upper bounds.

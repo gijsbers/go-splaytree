@@ -55,3 +55,21 @@ func TestReplace(t *testing.T) {
 		tree.CheckBinarySearchTree()
 	}
 }
+
+func TestReplaceAll(t *testing.T) {
+	tree := NewSplayTree()
+	if tree == nil {
+		t.Errorf("new tree == nil")
+	}
+	items1 := []Item{Int(6), Int(4), Int(2), Int(5), Int(3), Int(7), Int(0)}
+	num := tree.ReplaceAll(items1)
+	if num != 0 {
+		t.Errorf("ReplaceAll %v != %v", num, 0)
+	}
+	items2 := []Item{Int(6), Int(4), Int(2), Int(5), Int(3), Int(7), Int(0)}
+	num = tree.ReplaceAll(items2)
+	if num != len(items2) {
+		t.Errorf("ReplaceAll %v != %v", num, len(items2))
+	}
+	tree.CheckBinarySearchTree()
+}

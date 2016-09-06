@@ -75,6 +75,8 @@ func (tree *SplayTree) ReverseIterator() func() Item {
 
 // RangeIterator creates a new iterator for this tree which
 // observes lower and upper bounds on all returned items.
+// A RangeIterator traverses only those parts of the tree
+// which are in the given range, or leading to it.
 // On each call, the iterator gives the current item,
 // which will be in the range [lower, upper],
 // and advances the internal state to the next node.
