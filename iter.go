@@ -1,6 +1,6 @@
-//
+// Package splaytree defines several iterators for SplayTree.
 // Splay tree iterators traverse the tree in order.
-// For each call the current item is returned
+// For each call to the iterator the current item is returned
 // and the iterator advances to the next tree node.
 // When using iterators one must observe two rules:
 //
@@ -15,7 +15,7 @@
 //
 package splaytree
 
-// Make a new iterator for this tree.
+// Iterator creates a new iterator for this tree.
 // On each call, the iterator gives the current item
 // and advances to the next node.
 // The items are returned in sorted sequence
@@ -44,7 +44,7 @@ func (tree *SplayTree) Iterator() func() Item {
 	}
 }
 
-// Make a new reverse iterator for this tree.
+// ReverseIterator creates a new reverse iterator for this tree.
 // On each call, the iterator gives the current item
 // and advances to the next node.
 // The items are returned in reverse sorted sequence
@@ -73,8 +73,8 @@ func (tree *SplayTree) ReverseIterator() func() Item {
 	}
 }
 
-// Make a new iterator for this tree which observes
-// lower and upper bounds on the returned items.
+// RangeIterator creates a new iterator for this tree which
+// observes lower and upper bounds on all returned items.
 // On each call, the iterator gives the current item,
 // which will be in the range [lower, upper],
 // and advances the internal state to the next node.

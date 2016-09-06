@@ -1,4 +1,4 @@
 .PHONY: all
 
 all:
-	go build
+	@go build && golint && go test

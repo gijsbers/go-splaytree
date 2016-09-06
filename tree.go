@@ -1,6 +1,6 @@
 package splaytree
 
-// A splay tree.
+// SplayTree defines the splay tree type.
 type SplayTree struct {
 	root *node
 }
@@ -8,7 +8,7 @@ type SplayTree struct {
 // Compile time test if SplayTree fully implements Interface.
 var _ Interface = (*SplayTree)(nil)
 
-// Remove all elements of the tree.
+// Clear all elements from the tree.
 func (tree *SplayTree) Clear() {
 	tree.root = nil
 }
@@ -18,7 +18,7 @@ func (tree *SplayTree) Count() int {
 	return tree.root.count()
 }
 
-// Compute the height of the tree.
+// Height computes the height of the tree.
 // This is the number of steps from
 // the root to the farthest element.
 // An empty tree has height -1.
@@ -26,12 +26,12 @@ func (tree *SplayTree) Height() int {
 	return -1 + tree.root.height()
 }
 
-// Test if the tree contains at least one element.
+// NonEmpty tests if the tree contains at least one element.
 func (tree *SplayTree) NonEmpty() bool {
 	return tree.root != nil
 }
 
-// Give the element which is currently at
+// Root gives the element which is currently at
 // the root of the tree as a pair (item, true).
 // Return a pair (nil, false) if the tree is empty.
 func (tree *SplayTree) Root() (Item, bool) {

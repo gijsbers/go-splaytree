@@ -47,7 +47,7 @@ func ExampleRangeIterator() {
 	tree := NewSplayTree()
 	tree.InsertAll([]Item{Int(2), Int(4), Int(6), Int(1), Int(5), Int(3), Int(0)})
 	iter := tree.RangeIterator(Int(2), Int(4))
-	var last Item = nil
+	var last Item
 	for item := iter(); item != nil; item = iter() {
 		fmt.Printf("%v ", item)
 		last = item

@@ -1,6 +1,6 @@
 package splaytree
 
-// The public interface of splay trees
+// Interface defines the public interface of splay trees
 type Interface interface {
 	// Remove all elements of the tree
 	Clear()

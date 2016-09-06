@@ -1,6 +1,6 @@
 package splaytree
 
-// Add a new item to the tree, if it is not yet in the tree.
+// Insert adds a new item to the tree, if it is not yet in the tree.
 // Return true if the element was added, else false.
 func (tree *SplayTree) Insert(item Item) bool {
 	if item == nil {
@@ -9,7 +9,8 @@ func (tree *SplayTree) Insert(item Item) bool {
 	return tree.insertReplace(item, false)
 }
 
-// Insert or replace an element.
+// Replace an item if it was already in the tree.
+// Otherwise insert the item as a new element.
 // Return true if it was replaced, false if inserted.
 func (tree *SplayTree) Replace(item Item) bool {
 	if item == nil {
@@ -18,7 +19,7 @@ func (tree *SplayTree) Replace(item Item) bool {
 	return tree.insertReplace(item, true)
 }
 
-// Insert a number of elements.
+// InsertAll inserts a number of elements to the tree.
 // Return the number of added items,
 // i.e. the increase in size of the tree.
 func (tree *SplayTree) InsertAll(items []Item) int {
@@ -28,13 +29,13 @@ func (tree *SplayTree) InsertAll(items []Item) int {
 	num := 0
 	for _, item := range items {
 		if tree.insertReplace(item, false) {
-			num += 1
+			num++
 		}
 	}
 	return num
 }
 
-// Insert or replace a number of elements.
+// ReplaceAll replaces or inserts a number of elements.
 // Return the number of elements which replaced existing items.
 func (tree *SplayTree) ReplaceAll(items []Item) int {
 	if items == nil {
@@ -43,7 +44,7 @@ func (tree *SplayTree) ReplaceAll(items []Item) int {
 	num := 0
 	for _, item := range items {
 		if tree.insertReplace(item, true) {
-			num += 1
+			num++
 		}
 	}
 	return num
@@ -72,8 +73,6 @@ func (tree *SplayTree) insertReplace(item Item, replace bool) bool {
 		return !replace
 	} else if replace {
 		root.item = item
-		return true
-	} else {
-		return false
 	}
+	return replace
 }

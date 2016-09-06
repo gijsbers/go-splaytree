@@ -1,3 +1,4 @@
+// Package splaytree implements splay trees.
 // A splay tree is a self-balancing binary search tree.
 // The tree contains only unique keys in sorted order.
 // The self-balancing (called splaying) is done for every insert,

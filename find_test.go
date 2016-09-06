@@ -10,12 +10,14 @@ func TestMin(t *testing.T) {
 		if tree.Insert(item) != true {
 			t.Errorf("tree insert %v", item)
 		}
+		tree.CheckBinarySearchTree()
 		if item.Less(min) {
 			min = item.(Int)
 		}
 		if tree.Min() != min {
 			t.Errorf("tree min !%v", item)
 		}
+		tree.CheckBinarySearchTree()
 	}
 }
 
@@ -27,11 +29,13 @@ func TestMax(t *testing.T) {
 		if tree.Insert(item) != true {
 			t.Errorf("tree insert %v", item)
 		}
+		tree.CheckBinarySearchTree()
 		if max.Less(item) {
 			max = item.(Int)
 		}
 		if tree.Max() != max {
 			t.Errorf("tree max !%v", item)
 		}
+		tree.CheckBinarySearchTree()
 	}
 }

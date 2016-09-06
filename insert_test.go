@@ -12,13 +12,14 @@ func TestInsert(t *testing.T) {
 		if tree.Insert(item) == false {
 			t.Errorf("insert !%v", item)
 		}
-		num += 1
+		num++
 		if cnt := tree.Count(); cnt != num {
 			t.Errorf("insert %v != %v", item, cnt)
 		}
 		if _, bo := tree.Lookup(item); bo == false {
 			t.Errorf("lookup after insert !%v", item)
 		}
+		tree.CheckBinarySearchTree()
 	}
 }
 
@@ -32,13 +33,14 @@ func TestReplace(t *testing.T) {
 		if tree.Replace(item) != false {
 			t.Errorf("replace !%v false", item)
 		}
-		num += 1
+		num++
 		if cnt := tree.Count(); cnt != num {
 			t.Errorf("insert %v != %v", item, cnt)
 		}
 		if _, bo := tree.Lookup(item); bo == false {
 			t.Errorf("lookup after replace !%v", item)
 		}
+		tree.CheckBinarySearchTree()
 	}
 	for _, item := range []Item{Int(6), Int(4), Int(2), Int(5), Int(3), Int(7), Int(0)} {
 		if tree.Replace(item) != true {
@@ -50,5 +52,6 @@ func TestReplace(t *testing.T) {
 		if _, bo := tree.Lookup(item); bo == false {
 			t.Errorf("lookup after 2nd replace !%v", item)
 		}
+		tree.CheckBinarySearchTree()
 	}
 }

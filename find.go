@@ -1,6 +1,6 @@
 package splaytree
 
-// Give the smallest element in the tree.
+// Min gives the smallest element in the tree.
 // If the tree is empty then nil is returned.
 func (tree *SplayTree) Min() Item {
 	node := tree.root
@@ -15,7 +15,7 @@ func (tree *SplayTree) Min() Item {
 	return item
 }
 
-// Give the largest element in the tree.
+// Max gives the largest element in the tree.
 // If the tree is empty then nil is returned.
 func (tree *SplayTree) Max() Item {
 	node := tree.root

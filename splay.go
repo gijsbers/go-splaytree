@@ -18,11 +18,11 @@ package splaytree
  *   in the delete() method.
  */
 func (tree *SplayTree) splay(item Item) {
-	var temp node = node{}
-	var lef *node = &temp
-	var rig *node = &temp
-	var top *node = tree.root
-	var yes *node = nil
+	var temp = node{}
+	var lef = &temp
+	var rig = &temp
+	var top = tree.root
+	var yes *node
 	for {
 		if item.Less(top.item) {
 			if top.left == nil {
