@@ -37,6 +37,10 @@ are sequential or clustered.
 
         $ go get github.com/gijsbers/go-splaytree
 
+##Documentation
+
+[![GoDoc](https://godoc.org/github.com/gijsbers/go-splaytree?status.svg)](https://godoc.org/github.com/gijsbers/go-splaytree)
+
 ##Copyright and License
 
 Copyright ©2016 Bert Gijsbers except where otherwise noted. All rights reserved.
