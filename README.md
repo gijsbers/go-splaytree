@@ -10,13 +10,25 @@ Future accesses to this node or to its neighbours will then be cheaper.
 Splay trees perform best when there is temporal or spatial
 [locality](https://en.wikipedia.org/wiki/Locality_of_reference)
 in the access patterns (insertions, lookups or removals).
+Say, you enter person data by date+time of birth and then
+you investigate specific age groups.
+Or you manage virtual memory pages and your applications tend
+to focus on groups of related pages. Over time they will
+abandon some groups of memory pages and move on to other
+groups of memory pages.
+
+On average the cost of accesses (insertions, lookups or removals)
+is O(log n). The worst case cost for one access is O(n).
+Inserting a sorted sequence of 'n' elements into an empty tree
+has cost O(n), which is optimal.  Retrieving that same sequence
+in either ascending or descending order has again cost O(n).
 
 ##References
 
-"Performance Analysis of BSTs in System Software"
-[link](http://benpfaff.org/papers/libavl.pdf) by Ben Pfaff
-compares 20 variants of BSTs and concludes that splay trees
-performs best when accesses are sequential or clustered.
+["Performance Analysis of BSTs in System Software"](http://benpfaff.org/papers/libavl.pdf)
+by Ben Pfaff, compares the performance of 20 variants of BSTs and
+concludes that splay trees perform best when accesses
+are sequential or clustered.
 
 ##Installation
 

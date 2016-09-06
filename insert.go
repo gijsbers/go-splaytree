@@ -1,5 +1,7 @@
 package splaytree
 
+// Add a new item to the tree, if it is unique.
+// Return true if the element was added, else false.
 func (tree *SplayTree) Insert(item Item) bool {
 	if item == nil {
 		panic("SplayTree Insert nil")
@@ -7,6 +9,8 @@ func (tree *SplayTree) Insert(item Item) bool {
 	return tree.insertReplace(item, false)
 }
 
+// Insert or replace an element.
+// Return true if it was replaced, false if inserted.
 func (tree *SplayTree) Replace(item Item) bool {
 	if item == nil {
 		panic("SplayTree Replace nil")
@@ -14,6 +18,7 @@ func (tree *SplayTree) Replace(item Item) bool {
 	return tree.insertReplace(item, true)
 }
 
+// Insert a number of elements and return the number of insertions.
 func (tree *SplayTree) InsertAll(items []Item) int {
 	if items == nil {
 		panic("SplayTree InsertAll nil")
@@ -27,6 +32,8 @@ func (tree *SplayTree) InsertAll(items []Item) int {
 	return num
 }
 
+// Insert or replace a number of elements and
+// return the number of elements which were replaced.
 func (tree *SplayTree) ReplaceAll(items []Item) int {
 	if items == nil {
 		panic("SplayTree ReplaceAll nil")

@@ -1,5 +1,7 @@
 package splaytree
 
+// Give the smallest element in the tree.
+// If the tree is empty then nil is returned.
 func (tree *SplayTree) Min() Item {
 	node := tree.root
 	if node == nil {
@@ -13,6 +15,8 @@ func (tree *SplayTree) Min() Item {
 	return item
 }
 
+// Give the largest element in the tree.
+// If the tree is empty then nil is returned.
 func (tree *SplayTree) Max() Item {
 	node := tree.root
 	if node == nil {
@@ -26,6 +30,8 @@ func (tree *SplayTree) Max() Item {
 	return item
 }
 
+// Lookup an item and return a pair of the found item with true.
+// If the tree is empty then (nil, false) is returned.
 func (tree *SplayTree) Lookup(item Item) (Item, bool) {
 	if item == nil || tree.root == nil {
 		return nil, false

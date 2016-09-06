@@ -1,5 +1,7 @@
 package splaytree
 
+// A stack to remember parent nodes when
+// traversing a tree.
 type stack struct {
 	nodes []*node
 }
