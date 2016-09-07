@@ -1,5 +1,5 @@
 // Package splaytree defines several iterators for SplayTree.
-// Splay tree iterators traverse the tree in order.
+// Splay tree iterators traverse the tree in sorted order.
 // For each call to the iterator the current item is returned
 // and the iterator advances to the next tree node.
 // When using iterators one must observe two rules:
@@ -12,13 +12,14 @@
 // (2) When one abandons (stops using) an iterator before
 // it has returned nil, in order to preserve optimal theoretical
 // properties, one must do a tree lookup on the last returned item.
+// The iterator examples illustrate this.
 //
 package splaytree
 
 // Iterator creates a new iterator for this tree.
 // On each call, the iterator gives the current item
 // and advances to the next node.
-// The items are returned in sorted sequence
+// The items are returned sorted
 // from the smallest to the largest item.
 // When all items have been visited nil is returned.
 //
@@ -47,7 +48,7 @@ func (tree *SplayTree) Iterator() func() Item {
 // ReverseIterator creates a new reverse iterator for this tree.
 // On each call, the iterator gives the current item
 // and advances to the next node.
-// The items are returned in reverse sorted sequence
+// The items are returned in reverse sorted order
 // from the largest to the smallest item.
 // When all items have been visited nil is returned.
 //
@@ -85,6 +86,7 @@ func (tree *SplayTree) ReverseIterator() func() Item {
 // After having used a range iterator one should do a tree
 // lookup on the last returned non-nil item in order
 // to preserve optimal theoretical properties.
+// The iterator examples illustrate this.
 //
 func (tree *SplayTree) RangeIterator(lower Item, upper Item) func() Item {
 	inRange := func(item Item) bool {

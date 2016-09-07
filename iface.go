@@ -24,6 +24,8 @@ type Interface interface {
 	Insert(item Item) bool
 	// Add a number of items to the tree
 	InsertAll(items []Item) int
+	// Create a new iterator over this tree.
+	Iterator() func() Item
 	// Lookup an item
 	Lookup(item Item) (Item, bool)
 	// Give the largest element
@@ -32,10 +34,14 @@ type Interface interface {
 	Min() Item
 	// Test if the tree contains at least one element
 	NonEmpty() bool
+	// Create an iterator for a limited range of items
+	RangeIterator(lower Item, upper Item) func() Item
 	// Insert or replace an element
 	Replace(item Item) bool
 	// Insert or replace a number of elements
 	ReplaceAll(items []Item) int
+	// Create an iterator which iterates in descending order
+	ReverseIterator() func() Item
 	// Give the current root element
 	Root() (Item, bool)
 }

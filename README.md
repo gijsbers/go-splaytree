@@ -1,6 +1,6 @@
 # go-splaytree
 
-Splay tree in Go.
+The splay tree data structure in Go.
 
 [Splay trees](https://en.wikipedia.org/wiki/Splay_tree)
 are self-balancing binary search trees.
@@ -11,27 +11,28 @@ Splay trees perform best when there is temporal or spatial
 [locality](https://en.wikipedia.org/wiki/Locality_of_reference)
 in the access patterns (insertions, lookups or removals).
 Say, you enter person data by date+time of birth and then
-you investigate specific age groups.
-Or you manage virtual memory pages and your applications tend
-to focus on groups of related pages. Over time they will
-abandon some groups of memory pages and move on to other
-groups of memory pages. The implied locality of reference in
-these examples indicate splay trees as the data structure of choice.
+you investigate specific age groups.  Or you manage virtual
+memory pages and your applications tend to focus on groups
+of related pages. Over time they will abandon some groups
+of memory pages and move on to other groups of memory
+pages. The implied locality of reference in these examples
+indicate splay trees as the data structure of choice.
 
-The worst case cost for a single access (insertions, lookups or removals)
-is O(n), but amortized (averaged) over a sequence of accesses,
-while starting from an empty tree, the cost will be O(log n).
-Inserting a sorted sequence of 'n' elements into an empty tree
-has total cost O(n), which is optimal.  Retrieving that same sequence
-of 'n' elements in either ascending or descending order has total cost O(n),
-which is again optimal.
+The worst case cost for a single access (insertions,
+lookups or removals) is O(n), but amortized (averaged) over
+a sequence of accesses, while starting from an empty tree,
+the cost will be O(log n).  Inserting a sorted sequence
+of 'n' elements into an empty tree has total cost O(n),
+which is optimal.  Retrieving that same sequence of 'n'
+elements in either ascending or descending order has total
+cost O(n), which is again optimal.
 
 ##References
 
 ["Performance Analysis of BSTs in System Software"](http://benpfaff.org/papers/libavl.pdf)
-by Ben Pfaff, compares the performance of 20 variants of BSTs and
-concludes that splay trees perform best when accesses
-are sequential or clustered.
+by Ben Pfaff, compares the performance of 20 variants
+of binary search trees (BSTs) and concludes that splay trees
+perform best when accesses are sequential or clustered.
 
 ##Installation
 
