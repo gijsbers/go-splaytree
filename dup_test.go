@@ -6,9 +6,9 @@ func TestDuplicate(t *testing.T) {
 	tree := NewSplayTree()
 	items := []Item{Int(3), Int(5), Int(7), Int(2), Int(4), Int(6), Int(8)}
 	tree.InsertAll(items)
-	tree.CheckBinarySearchTree()
+	tree.Check()
 	dup := tree.Duplicate().(*SplayTree)
-	dup.CheckBinarySearchTree()
+	dup.Check()
 	if tree.Count() != dup.Count() {
 		t.Errorf("dup count")
 	}
@@ -22,7 +22,7 @@ func TestDuplicate(t *testing.T) {
 		if _, bl := dup.Lookup(item); !bl {
 			t.Errorf("dup lookup %v", item)
 		}
-		tree.CheckBinarySearchTree()
-		dup.CheckBinarySearchTree()
+		tree.Check()
+		dup.Check()
 	}
 }

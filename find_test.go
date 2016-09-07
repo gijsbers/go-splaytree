@@ -4,7 +4,7 @@ import "testing"
 
 func TestMin(t *testing.T) {
 	tree := NewSplayTree()
-	tree.CheckBinarySearchTree()
+	tree.Check()
 	if tree.Min() != nil {
 		t.Errorf("tree min !nil")
 	}
@@ -14,20 +14,20 @@ func TestMin(t *testing.T) {
 		if tree.Insert(item) != true {
 			t.Errorf("tree insert %v", item)
 		}
-		tree.CheckBinarySearchTree()
+		tree.Check()
 		if item.Less(min) {
 			min = item.(Int)
 		}
 		if tree.Min() != min {
 			t.Errorf("tree min !%v", item)
 		}
-		tree.CheckBinarySearchTree()
+		tree.Check()
 	}
 }
 
 func TestMax(t *testing.T) {
 	tree := NewSplayTree()
-	tree.CheckBinarySearchTree()
+	tree.Check()
 	if tree.Max() != nil {
 		t.Errorf("tree max !nil")
 	}
@@ -37,20 +37,20 @@ func TestMax(t *testing.T) {
 		if tree.Insert(item) != true {
 			t.Errorf("tree insert %v", item)
 		}
-		tree.CheckBinarySearchTree()
+		tree.Check()
 		if max.Less(item) {
 			max = item.(Int)
 		}
 		if tree.Max() != max {
 			t.Errorf("tree max !%v", item)
 		}
-		tree.CheckBinarySearchTree()
+		tree.Check()
 	}
 }
 
 func TestLookup(t *testing.T) {
 	tree := NewSplayTree()
-	tree.CheckBinarySearchTree()
+	tree.Check()
 	if i, b := tree.Lookup(nil); b || i != nil {
 		t.Errorf("tree find !nil %v %v", b, i)
 	}
@@ -59,17 +59,17 @@ func TestLookup(t *testing.T) {
 		if tree.Insert(item) != true {
 			t.Errorf("tree insert %v", item)
 		}
-		tree.CheckBinarySearchTree()
+		tree.Check()
 		if i, b := tree.Lookup(item); !b || i == nil || i != item {
 			t.Errorf("tree lookup !%v", item)
 		}
-		tree.CheckBinarySearchTree()
+		tree.Check()
 	}
 	miss := []Item{Int(1), Int(0), Int(9)}
 	for _, item := range miss {
 		if i, b := tree.Lookup(item); b || i != nil {
 			t.Errorf("tree lookup !!%v %v %v", item, b, i)
 		}
-		tree.CheckBinarySearchTree()
+		tree.Check()
 	}
 }

@@ -77,7 +77,7 @@ func (tree *SplayTree) DeleteMax() (Item, bool) {
 		return nil, false
 	}
 	if node.right == nil {
-		tree.root = node.right
+		tree.root = node.left
 	} else {
 		var parent = node
 		node = node.right

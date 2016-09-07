@@ -5,7 +5,7 @@ import "testing"
 func TestClear(t *testing.T) {
 	tree := NewSplayTree()
 	tree.InsertAll([]Item{Int(6), Int(4), Int(3), Int(1)})
-	tree.CheckBinarySearchTree()
+	tree.Check()
 	tree.Clear()
 	if tree.root != nil {
 		t.Errorf("root != nil")
@@ -18,7 +18,7 @@ func TestCount(t *testing.T) {
 		t.Errorf("count !0")
 	}
 	tree.InsertAll([]Item{Int(6), Int(4), Int(3), Int(1)})
-	tree.CheckBinarySearchTree()
+	tree.Check()
 	if tree.Count() != 4 {
 		t.Errorf("count !4")
 	}
@@ -57,7 +57,7 @@ func TestHeight(t *testing.T) {
 	if h := tree.Height(); h != 2 && h != 3 {
 		t.Errorf("height !<2 %v %v", h, tree.Count())
 	}
-	tree.CheckBinarySearchTree()
+	tree.Check()
 }
 
 func TestNonEmpty(t *testing.T) {

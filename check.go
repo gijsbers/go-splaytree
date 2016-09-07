@@ -1,8 +1,8 @@
 package splaytree
 
-// CheckBinarySearchTree verifies that the tree
+// Check verifies that the tree
 // is a proper binary search tree.
-func (tree *SplayTree) CheckBinarySearchTree() {
+func (tree *SplayTree) Check() {
 	if !tree.isBinarySearchTree() {
 		panic("IsBinarySearchTree failed")
 	}
