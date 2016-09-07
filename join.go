@@ -3,8 +3,12 @@ package splaytree
 // Join two trees with cost O(N + M), which is optimal.
 // After the join all unique elements of both trees are
 // in the first tree. The second tree becomes empty.
-func (tree *SplayTree) Join(oak *SplayTree) {
-	if oak == nil || tree == oak {
+func (tree *SplayTree) Join(other Interface) {
+	if other == nil {
+		return
+	}
+	oak := other.(*SplayTree)
+	if oak == tree {
 		return
 	}
 	tree.root = join(tree.root, oak.root)

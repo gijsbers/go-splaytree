@@ -1,5 +1,26 @@
 package splaytree
 
+// DeleteRoot removes the element which is currently at the root.
+// Return (nil, false) if the tree was empty, else (root item, true).
+func (tree *SplayTree) DeleteRoot() (Item, bool) {
+	node := tree.root
+	if node == nil {
+		return nil, false
+	}
+	found := node.item
+	if node.left == nil {
+		tree.root = node.right
+	} else if node.right == nil {
+		tree.root = node.left
+	} else {
+		temp := node.right
+		tree.root = node.left
+		tree.splay(found)
+		tree.root.right = temp
+	}
+	return found, true
+}
+
 // Delete an item from the tree.
 // Return a pair (item, true) if the item was found
 // and deleted, else (nil, false).
@@ -11,16 +32,7 @@ func (tree *SplayTree) Delete(item Item) (Item, bool) {
 	if item.Less(tree.root.item) || tree.root.item.Less(item) {
 		return nil, false
 	}
-	found := tree.root.item
-	if tree.root.left == nil {
-		tree.root = tree.root.right
-	} else {
-		temp := tree.root.right
-		tree.root = tree.root.left
-		tree.splay(item)
-		tree.root.right = temp
-	}
-	return found, true
+	return tree.DeleteRoot()
 }
 
 // DeleteAll deletes all given items.
@@ -42,10 +54,19 @@ func (tree *SplayTree) DeleteMin() (Item, bool) {
 	if node == nil {
 		return nil, false
 	}
-	for node.left != nil {
+	if node.left == nil {
+		tree.root = node.right
+	} else {
+		var parent = node
 		node = node.left
+		for node.left != nil {
+			parent = node
+			node = node.left
+		}
+		parent.left = node.right
+		tree.splay(parent.item)
 	}
-	return tree.Delete(node.item)
+	return node.item, true
 }
 
 // DeleteMax returns the largest element.
@@ -55,17 +76,17 @@ func (tree *SplayTree) DeleteMax() (Item, bool) {
 	if node == nil {
 		return nil, false
 	}
-	for node.right != nil {
+	if node.right == nil {
+		tree.root = node.right
+	} else {
+		var parent = node
 		node = node.right
+		for node.right != nil {
+			parent = node
+			node = node.right
+		}
+		parent.right = node.left
+		tree.splay(parent.item)
 	}
-	return tree.Delete(node.item)
-}
-
-// DeleteRoot returns the element which is currently at the root.
-// Return a pair (root item, true) if the tree was non-empty.
-func (tree *SplayTree) DeleteRoot() (Item, bool) {
-	if tree.root == nil {
-		return nil, false
-	}
-	return tree.Delete(tree.root.item)
+	return node.item, true
 }
