@@ -37,17 +37,17 @@ func TestStress(t *testing.T) {
 		for i := 0; i < doit; i++ {
 			k := rand.Intn(2 * size)
 			f, have := findSorted(k, nums, size)
-			_, look := tree.Lookup(Int(k))
+			look := tree.Lookup(Int(k)) != nil
 			if look != have && (!have || !dels[f]) {
 				t.Errorf("lookup failed %v %v", look, have)
 			} else if look {
 				r := rand.Intn(1000)
 				if r < 250 {
-					_, del := tree.Delete(Int(k))
-					if del != look {
-						t.Errorf("delete failed %v %v %v %v", look, del, have, dels[f])
+					del := tree.Delete(Int(k))
+					if del == nil {
+						t.Errorf("delete failed %v %v %v", look, have, dels[f])
 					}
-					if del {
+					if del != nil {
 						dels[f] = true
 					}
 				}
@@ -66,7 +66,7 @@ func TestStress(t *testing.T) {
 						dels[f] = false
 					}
 				}
-			} else if _, del := tree.Delete(Int(k)); del {
+			} else if del := tree.Delete(Int(k)); del != nil {
 				t.Errorf("delete should have failed %v %v %v", look, have, dels[f])
 			}
 		}

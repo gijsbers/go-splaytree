@@ -30,15 +30,15 @@ func (tree *SplayTree) Max() Item {
 	return item
 }
 
-// Lookup an item and return a pair of the found item with true.
-// If the tree is empty then (nil, false) is returned.
-func (tree *SplayTree) Lookup(item Item) (Item, bool) {
+// Lookup an item and return the found item.
+// If the tree is empty then nil is returned.
+func (tree *SplayTree) Lookup(item Item) Item {
 	if item == nil || tree.root == nil {
-		return nil, false
+		return nil
 	}
 	tree.splay(item)
 	if item.Less(tree.root.item) || tree.root.item.Less(item) {
-		return nil, false
+		return nil
 	}
-	return tree.root.item, true
+	return tree.root.item
 }

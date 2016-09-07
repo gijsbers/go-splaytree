@@ -16,10 +16,10 @@ func TestDuplicate(t *testing.T) {
 		t.Errorf("dup height")
 	}
 	for _, item := range items {
-		if _, bl := tree.Lookup(item); !bl {
+		if tree.Lookup(item) == nil {
 			t.Errorf("tree lookup %v", item)
 		}
-		if _, bl := dup.Lookup(item); !bl {
+		if dup.Lookup(item) == nil {
 			t.Errorf("dup lookup %v", item)
 		}
 		tree.Check()

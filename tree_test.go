@@ -77,15 +77,15 @@ func TestNonEmpty(t *testing.T) {
 
 func TestRoot(t *testing.T) {
 	tree := NewSplayTree()
-	if r, b := tree.Root(); b != false || r != nil {
+	if r := tree.Root(); r != nil {
 		t.Errorf("Root !false")
 	}
 	tree.Insert(Int(2))
-	if r, b := tree.Root(); b == false || r == nil {
+	if r := tree.Root(); r == nil {
 		t.Errorf("Root !true")
 	}
 	tree.Clear()
-	if r, b := tree.Root(); b != false || r != nil {
+	if r := tree.Root(); r != nil {
 		t.Errorf("Root !false")
 	}
 }

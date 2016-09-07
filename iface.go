@@ -7,15 +7,15 @@ type Interface interface {
 	// Count the number of elements in the tree
 	Count() int
 	// Remove an item from the tree
-	Delete(item Item) (Item, bool)
+	Delete(item Item) Item
 	// Remove all given items from the tree
 	DeleteAll(items []Item) int
 	// Remove the largest element of the tree
-	DeleteMax() (Item, bool)
+	DeleteMax() Item
 	// Remove the smallest element of the tree
-	DeleteMin() (Item, bool)
+	DeleteMin() Item
 	// Remove and return the element at the root
-	DeleteRoot() (Item, bool)
+	DeleteRoot() Item
 	// Clone the tree
 	Duplicate() Interface
 	// Compute the height of the tree
@@ -29,7 +29,7 @@ type Interface interface {
 	// Join two trees with cost O(N + M), which is optimal.
 	Join(other Interface)
 	// Lookup an item
-	Lookup(item Item) (Item, bool)
+	Lookup(item Item) Item
 	// Give the largest element
 	Max() Item
 	// Give the smallest element
@@ -45,5 +45,5 @@ type Interface interface {
 	// Create an iterator which iterates in descending order
 	ReverseIterator() func() Item
 	// Give the current root element
-	Root() (Item, bool)
+	Root() Item
 }

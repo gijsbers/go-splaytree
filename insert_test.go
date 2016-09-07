@@ -16,7 +16,7 @@ func TestInsert(t *testing.T) {
 		if cnt := tree.Count(); cnt != num {
 			t.Errorf("insert %v != %v", item, cnt)
 		}
-		if _, bo := tree.Lookup(item); bo == false {
+		if tree.Lookup(item) == nil {
 			t.Errorf("lookup after insert !%v", item)
 		}
 		tree.Check()
@@ -37,7 +37,7 @@ func TestReplace(t *testing.T) {
 		if cnt := tree.Count(); cnt != num {
 			t.Errorf("insert %v != %v", item, cnt)
 		}
-		if _, bo := tree.Lookup(item); bo == false {
+		if tree.Lookup(item) == nil {
 			t.Errorf("lookup after replace !%v", item)
 		}
 		tree.Check()
@@ -49,7 +49,7 @@ func TestReplace(t *testing.T) {
 		if cnt := tree.Count(); cnt != num {
 			t.Errorf("replace %v != %v", item, cnt)
 		}
-		if _, bo := tree.Lookup(item); bo == false {
+		if tree.Lookup(item) == nil {
 			t.Errorf("lookup after 2nd replace !%v", item)
 		}
 		tree.Check()

@@ -31,12 +31,11 @@ func (tree *SplayTree) NonEmpty() bool {
 	return tree.root != nil
 }
 
-// Root gives the element which is currently at
-// the root of the tree as a pair (item, true).
-// Return a pair (nil, false) if the tree is empty.
-func (tree *SplayTree) Root() (Item, bool) {
+// Root gives the element which is currently at the root
+// of the tree. If the tree is empty then nil is returned.
+func (tree *SplayTree) Root() Item {
 	if tree.root == nil {
-		return nil, false
+		return nil
 	}
-	return tree.root.item, true
+	return tree.root.item
 }

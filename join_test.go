@@ -29,7 +29,7 @@ func TestJoin(t *testing.T) {
 	}
 	fir.Check()
 	for _, item := range append(it1, it2...) {
-		if _, ok := fir.Lookup(item); !ok {
+		if fir.Lookup(item) == nil {
 			t.Errorf("join lookup !%v", item)
 		}
 	}

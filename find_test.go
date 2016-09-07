@@ -51,8 +51,8 @@ func TestMax(t *testing.T) {
 func TestLookup(t *testing.T) {
 	tree := NewSplayTree()
 	tree.Check()
-	if i, b := tree.Lookup(nil); b || i != nil {
-		t.Errorf("tree find !nil %v %v", b, i)
+	if i := tree.Lookup(nil); i != nil {
+		t.Errorf("tree find !nil %v", i)
 	}
 	items := []Item{Int(3), Int(5), Int(7), Int(2), Int(4), Int(6), Int(8)}
 	for _, item := range items {
@@ -60,15 +60,15 @@ func TestLookup(t *testing.T) {
 			t.Errorf("tree insert %v", item)
 		}
 		tree.Check()
-		if i, b := tree.Lookup(item); !b || i == nil || i != item {
+		if i := tree.Lookup(item); i == nil || i != item {
 			t.Errorf("tree lookup !%v", item)
 		}
 		tree.Check()
 	}
 	miss := []Item{Int(1), Int(0), Int(9)}
 	for _, item := range miss {
-		if i, b := tree.Lookup(item); b || i != nil {
-			t.Errorf("tree lookup !!%v %v %v", item, b, i)
+		if i := tree.Lookup(item); i != nil {
+			t.Errorf("tree lookup !!%v %v", item, i)
 		}
 		tree.Check()
 	}

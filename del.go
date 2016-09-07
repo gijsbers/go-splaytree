@@ -1,11 +1,11 @@
 package splaytree
 
 // DeleteRoot removes the element which is currently at the root.
-// Return (nil, false) if the tree was empty, else (root item, true).
-func (tree *SplayTree) DeleteRoot() (Item, bool) {
+// Return nil if the tree was empty, else the root item.
+func (tree *SplayTree) DeleteRoot() Item {
 	node := tree.root
 	if node == nil {
-		return nil, false
+		return nil
 	}
 	found := node.item
 	if node.left == nil {
@@ -18,19 +18,18 @@ func (tree *SplayTree) DeleteRoot() (Item, bool) {
 		tree.splay(found)
 		tree.root.right = temp
 	}
-	return found, true
+	return found
 }
 
 // Delete an item from the tree.
-// Return a pair (item, true) if the item was found
-// and deleted, else (nil, false).
-func (tree *SplayTree) Delete(item Item) (Item, bool) {
+// Return the deleted item if it was found, else nil.
+func (tree *SplayTree) Delete(item Item) Item {
 	if item == nil || tree.root == nil {
-		return nil, false
+		return nil
 	}
 	tree.splay(item)
 	if item.Less(tree.root.item) || tree.root.item.Less(item) {
-		return nil, false
+		return nil
 	}
 	return tree.DeleteRoot()
 }
@@ -40,19 +39,19 @@ func (tree *SplayTree) Delete(item Item) (Item, bool) {
 func (tree *SplayTree) DeleteAll(items []Item) int {
 	num := 0
 	for _, item := range items {
-		if _, bo := tree.Delete(item); bo {
+		if tree.Delete(item) != nil {
 			num++
 		}
 	}
 	return num
 }
 
-// DeleteMin returns the smallest element.
-// Return a pair (smallest, true) if the tree was non-empty.
-func (tree *SplayTree) DeleteMin() (Item, bool) {
+// DeleteMin deletes the smallest element from the tree.
+// Return the smallest item if the tree was non-empty, else nil.
+func (tree *SplayTree) DeleteMin() Item {
 	node := tree.root
 	if node == nil {
-		return nil, false
+		return nil
 	}
 	if node.left == nil {
 		tree.root = node.right
@@ -66,15 +65,15 @@ func (tree *SplayTree) DeleteMin() (Item, bool) {
 		parent.left = node.right
 		tree.splay(parent.item)
 	}
-	return node.item, true
+	return node.item
 }
 
-// DeleteMax returns the largest element.
-// Return a pair (largest, true) if the tree was non-empty.
-func (tree *SplayTree) DeleteMax() (Item, bool) {
+// DeleteMax deletes the largest element from the tree.
+// Return the largest item if the tree was non-empty, else nil.
+func (tree *SplayTree) DeleteMax() Item {
 	node := tree.root
 	if node == nil {
-		return nil, false
+		return nil
 	}
 	if node.right == nil {
 		tree.root = node.left
@@ -88,5 +87,5 @@ func (tree *SplayTree) DeleteMax() (Item, bool) {
 		parent.right = node.left
 		tree.splay(parent.item)
 	}
-	return node.item, true
+	return node.item
 }
