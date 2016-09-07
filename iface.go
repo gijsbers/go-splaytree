@@ -26,6 +26,8 @@ type Interface interface {
 	InsertAll(items []Item) int
 	// Create a new iterator over this tree.
 	Iterator() func() Item
+	// Join two trees with cost O(N + M), which is optimal.
+	Join(other Interface)
 	// Lookup an item
 	Lookup(item Item) (Item, bool)
 	// Give the largest element

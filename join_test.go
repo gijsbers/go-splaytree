@@ -16,7 +16,7 @@ func TestJoin(t *testing.T) {
 	if oak.NonEmpty() {
 		t.Errorf("join oak !0")
 	}
-	tree.CheckBinarySearchTree()
+	fir.CheckBinarySearchTree()
 	oak.InsertAll(it2)
 	fir.Join(oak)
 	if fir.Count() != len(it1)+len(it2) {
@@ -25,11 +25,11 @@ func TestJoin(t *testing.T) {
 	if oak.NonEmpty() {
 		t.Errorf("join oak !0")
 	}
-	tree.CheckBinarySearchTree()
+	fir.CheckBinarySearchTree()
 	for _, item := range append(it1, it2...) {
 		if _, ok := fir.Lookup(item); !ok {
 			t.Errorf("join lookup !%v", item)
 		}
 	}
-	tree.CheckBinarySearchTree()
+	fir.CheckBinarySearchTree()
 }
