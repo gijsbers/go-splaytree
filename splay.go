@@ -22,7 +22,6 @@ func (tree *SplayTree) splay(item Item) {
 	var lef = &temp
 	var rig = &temp
 	var top = tree.root
-	var yes *node
 	for {
 		if item.Less(top.item) {
 			if top.left == nil {
@@ -30,7 +29,7 @@ func (tree *SplayTree) splay(item Item) {
 			}
 			if item.Less(top.left.item) {
 				// rotate right
-				yes = top.left
+				yes := top.left
 				top.left = yes.right
 				yes.right = top
 				top = yes
@@ -48,7 +47,7 @@ func (tree *SplayTree) splay(item Item) {
 			}
 			if top.right.item.Less(item) {
 				// rotate left
-				yes = top.right
+				yes := top.right
 				top.right = yes.left
 				yes.left = top
 				top = yes
