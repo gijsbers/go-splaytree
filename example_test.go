@@ -11,19 +11,25 @@ func (i Int) Less(than Item) bool {
 }
 
 func Example() {
+	// The element type must define a function Less,
+	// which compares two elements. For instance:
+	// type Int int
+	// func (i Int) Less(than Item) bool {
+	// 	return i < than.(Int)
+	// }
 	tree := NewSplayTree()
 	tree.Insert(Int(2))
-	tree.InsertAll([]Item{Int(1), Int(3), Int(0), Int(4)})
-	tree.Delete(Int(2))
-	min := tree.DeleteMin()
-	fmt.Printf("%v ", min)
-	max := tree.DeleteMax()
-	fmt.Printf("%v ", max)
+	tree.InsertAll([]Item{Int(1), Int(4), Int(0), Int(3)})
+	fmt.Printf("%v ", tree.Delete(tree.Root()))
+	fmt.Printf("%v ", tree.DeleteMin())
+	fmt.Printf("%v ", tree.DeleteMax())
+	fmt.Printf("%v ", tree.Lookup(Int(3)))
+	tree.Traverse(func(i Item) { fmt.Printf("%v ", i) })
 	iter := tree.Iterator()
 	for i := iter(); i != nil; i = iter() {
 		fmt.Printf("%v ", i)
 	}
-	// Output: 0 4 1 3
+	// Output: 3 0 4 <nil> 1 2 1 2
 }
 
 // Iterate over items in a tree. Abort the iteration halfway
