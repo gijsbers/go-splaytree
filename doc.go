@@ -18,4 +18,21 @@
 // related in location or time. This happens for instance
 // for sequential (sorted) or clustered access patterns.
 // See https://en.wikipedia.org/wiki/Splay_tree for details.
+//
+// Package splaytree defines several iterators for SplayTree.
+// Splay tree iterators traverse the tree in sorted order.
+// For each call to the iterator the current item is returned
+// and the iterator advances to the next tree node.
+// When using iterators one must observe two rules:
+//
+// (1) One must not call any other tree operations
+// which internally cause splaying, like insert, remove or delete.
+// This would mess up the internal state of the iterator.
+// If such an access must be done then abandon the iterator.
+//
+// (2) When one abandons (stops using) an iterator before
+// it has returned nil, in order to preserve optimal theoretical
+// properties, one must do a tree lookup on the last returned item.
+// The iterator examples illustrate this.
+//
 package splaytree
