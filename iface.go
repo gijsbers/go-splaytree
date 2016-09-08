@@ -46,4 +46,6 @@ type Interface interface {
 	ReverseIterator() func() Item
 	// Give the current root element
 	Root() Item
+	// Traverse a tree inorder with a function
+	Traverse(func(Item))
 }
