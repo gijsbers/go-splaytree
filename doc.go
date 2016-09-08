@@ -4,7 +4,8 @@
 // being used in order to optimize future operations.
 // The tree contains only unique keys in sorted order.
 // The self-balancing (called splaying) is done for every
-// insert, lookup or remove operation. The key which is
+// insert, lookup or remove operation. Splaying is heavily
+// optimized in a single loop. The key which is
 // inserted/looked up/removed is splayed upwards to the
 // root, by means of rotations over two or three nodes.
 // The effect is that future accesses to this key and to
