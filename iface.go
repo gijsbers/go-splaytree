@@ -20,6 +20,8 @@ type Interface interface {
 	Duplicate() Interface
 	// Compute the height of the tree
 	Height() int
+	// Infimum gives the closest smaller item
+	Infimum(item Item) Item
 	// Add a new item to the tree (if unique)
 	Insert(item Item) bool
 	// Add a number of items to the tree
@@ -46,6 +48,8 @@ type Interface interface {
 	ReverseIterator() func() Item
 	// Give the current root element
 	Root() Item
+	// Supremum gives the closest larger item
+	Supremum(item Item) Item
 	// Traverse a tree inorder with a function
 	Traverse(func(Item))
 }

@@ -1,8 +1,19 @@
 package splaytree
 
 import "testing"
+import "time"
+import "math/rand"
 
 func TestSplit(t *testing.T) {
+	rand := rand.New(rand.NewSource(time.Now().UnixNano()))
+	perm := func(upper int) []Item {
+		nums := rand.Perm(upper)
+		items := make([]Item, upper)
+		for i := 0; i < upper; i++ {
+			items[i] = Int(nums[i])
+		}
+		return items
+	}
 	lessThan := func(bound int) func(Item) {
 		return func(item Item) {
 			if Int(bound).Less(item) {
@@ -18,18 +29,20 @@ func TestSplit(t *testing.T) {
 		}
 	}
 
-	items := []Item{Int(1), Int(5), Int(3), Int(8), Int(4), Int(9), Int(0)}
-	for i := 0; i < 10; i++ {
-		tree := NewSplayTree()
-		tree.InsertAll(items)
-		lef, rig := tree.Split(Int(i))
-		lef.Traverse(lessThan(i))
-		rig.Traverse(atLeast(i))
-	}
-
 	tree := NewSplayTree()
 	lef, rig := tree.Split(Int(4))
 	if lef.NonEmpty() || rig.NonEmpty() {
 		t.Errorf("split nonempty")
+	}
+
+	for k := 1; k < 20; k++ {
+		items := perm(k)
+		for i := 0; i <= k; i++ {
+			tree := NewSplayTree()
+			tree.InsertAll(items)
+			lef, rig := tree.Split(Int(i))
+			lef.Traverse(lessThan(i))
+			rig.Traverse(atLeast(i))
+		}
 	}
 }
