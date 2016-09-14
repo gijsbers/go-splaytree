@@ -1,5 +1,8 @@
 # go-splaytree
 
+[![GoDoc](https://godoc.org/github.com/gijsbers/go-splaytree?status.svg)](https://godoc.org/github.com/gijsbers/go-splaytree)
+[![Report](https://goreportcard.com/badge/github.com/gijsbers/go-splaytree)](https://goreportcard.com/report/github.com/gijsbers/go-splaytree)
+
 The splay tree data structure in Go.
 
 [Splay trees](https://en.wikipedia.org/wiki/Splay_tree)
@@ -37,10 +40,6 @@ perform best when accesses are sequential or clustered.
 ##Installation
 
         $ go get github.com/gijsbers/go-splaytree
-
-##Documentation
-
-[![GoDoc](https://godoc.org/github.com/gijsbers/go-splaytree?status.svg)](https://godoc.org/github.com/gijsbers/go-splaytree)
 
 ##Copyright and License
 
