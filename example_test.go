@@ -34,7 +34,7 @@ func Example() {
 
 // Iterate over items in a tree. Abort the iteration halfway
 // and do a lookup to preserve optimal theoretical properties.
-func ExampleIterator() {
+func ExampleSplayTree_Iterator() {
 	tree := NewSplayTree()
 	tree.InsertAll([]Item{Int(2), Int(4), Int(1), Int(3), Int(6), Int(0)})
 	iter := tree.Iterator()
@@ -50,7 +50,7 @@ func ExampleIterator() {
 
 // Iterate over items in a tree in reverse order.
 // Aborting the iteration halfway requires doing a lookup on the last item.
-func ExampleReverseIterator() {
+func ExampleSplayTree_ReverseIterator() {
 	tree := NewSplayTree()
 	tree.InsertAll([]Item{Int(10), Int(99), Int(42), Int(0), Int(66), Int(5)})
 	iter := tree.ReverseIterator()
@@ -65,7 +65,7 @@ func ExampleReverseIterator() {
 }
 
 // Iterate over items in a tree while observing lower and upper bounds.
-func ExampleRangeIterator() {
+func ExampleSplayTree_RangeIterator() {
 	tree := NewSplayTree()
 	tree.InsertAll([]Item{Int(2), Int(4), Int(6), Int(1), Int(5), Int(3), Int(0)})
 	iter := tree.RangeIterator(Int(2), Int(4))
